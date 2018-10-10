@@ -3,5 +3,6 @@ package ru.algeran.datetime.numbers;
 enum  Case {
     nominative,
     parental,
-    other;
+    adjective_nominative,
+    adjective_parental;
 }

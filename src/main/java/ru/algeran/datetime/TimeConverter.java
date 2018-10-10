@@ -90,7 +90,7 @@ public class TimeConverter implements Converter {
                     null,
                     null,
                     null);
-            return dayTimeUtility.isMidnight() ? LocalTime.MIDNIGHT : LocalTime.of(12, 0);
+            return dayTimeUtility.isMidnight() ? LocalTime.MIDNIGHT : LocalTime.NOON;
         });
         TIME_MARKERS.put("через (\\d{1,3})?( )?((час(ов|а)?)|(мин(ут(ы|ов|ок)?)?))( (и )?(\\d{1,3})?( )?(мин(ут(ы|ов|ок)?)?)?)?", matcher -> {
             TimeUtility timeUtility = new TimeUtility(matcher,

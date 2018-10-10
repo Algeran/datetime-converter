@@ -144,7 +144,7 @@ public class DateConverter implements Converter {
 
             return LocalDate.now().plus(dayToAdd, ChronoUnit.DAYS);
         });
-        DATE_MARKERS.put("(\\d{1,2})([- ](о)?[гв]о)?" +
+        DATE_MARKERS.put("(\\d{1,2})([- ]?(о)?(е|[гв]о))?" +
                 "(\\.|[- /|])(" +
                 "(\\d{1,2})" +
                 "|(янв([ао]р[ьяе])?)" +
@@ -162,19 +162,19 @@ public class DateConverter implements Converter {
                 "((\\.|[- /|])(\\d{2,4}))?", matcher -> {
             int day = Integer.parseInt(matcher.group(1));
             int month = -1;
-            String monthGroup = matcher.group(6);
-            String january = matcher.group(7);
-            String february = matcher.group(9);
-            String march = matcher.group(12);
-            String april = matcher.group(15);
-            String may = matcher.group(17);
-            String june = matcher.group(18);
-            String july = matcher.group(20);
-            String august = matcher.group(22);
-            String september = matcher.group(25);
-            String october = matcher.group(28);
-            String november = matcher.group(31);
-            String december = matcher.group(34);
+            String monthGroup = matcher.group(7);
+            String january = matcher.group(8);
+            String february = matcher.group(10);
+            String march = matcher.group(13);
+            String april = matcher.group(16);
+            String may = matcher.group(18);
+            String june = matcher.group(19);
+            String july = matcher.group(21);
+            String august = matcher.group(23);
+            String september = matcher.group(26);
+            String october = matcher.group(29);
+            String november = matcher.group(32);
+            String december = matcher.group(35);
             if (monthGroup != null) {
                 month = Integer.parseInt(monthGroup);
             } else if (january != null) {
@@ -203,7 +203,7 @@ public class DateConverter implements Converter {
                 month = 12;
             }
             LocalDate nowDate = LocalDate.now();
-            String yearGroup = matcher.group(38);
+            String yearGroup = matcher.group(39);
             boolean lock = true;
             if (yearGroup == null || yearGroup.isEmpty()) {
                 yearGroup = String.valueOf(nowDate.getYear());

@@ -692,6 +692,34 @@ public class DateConverterTest {
                 .get()
                 .isEqualTo(expected);
 
+        result = dateConverter.convert("25го декабря");
+        assertThat(result)
+                .as("Определение даты формата 'dd MM yyyy'")
+                .isPresent()
+                .get()
+                .isEqualTo(expected);
+
+        result = dateConverter.convert("25ое декабря");
+        assertThat(result)
+                .as("Определение даты формата 'dd MM yyyy'")
+                .isPresent()
+                .get()
+                .isEqualTo(expected);
+
+        result = dateConverter.convert("25-ое декабря");
+        assertThat(result)
+                .as("Определение даты формата 'dd MM yyyy'")
+                .isPresent()
+                .get()
+                .isEqualTo(expected);
+
+        result = dateConverter.convert("25-е декабря");
+        assertThat(result)
+                .as("Определение даты формата 'dd MM yyyy'")
+                .isPresent()
+                .get()
+                .isEqualTo(expected);
+
         result = dateConverter.convert("25 8 2018");
         assertThat(result)
                 .as("Определение даты формата 'dd MM yyyy'")
@@ -720,5 +748,25 @@ public class DateConverterTest {
                 .get()
                 .isEqualTo(LocalDate.of(2018, 8, 1));
 
+        result = dateConverter.convert("первое апреля дветысячи пятнадцатого года");
+        assertThat(result)
+                .as("Определение даты формата 'dd MM yyyy'")
+                .isPresent()
+                .get()
+                .isEqualTo(LocalDate.of(2015, 4, 1));
+
+        result = dateConverter.convert("01 апреля 2015");
+        assertThat(result)
+                .as("Определение даты формата 'dd MM yyyy'")
+                .isPresent()
+                .get()
+                .isEqualTo(LocalDate.of(2015, 4, 1));
+
+        result = dateConverter.convert("01.12.2015");
+        assertThat(result)
+                .as("Определение даты формата 'dd MM yyyy'")
+                .isPresent()
+                .get()
+                .isEqualTo(LocalDate.of(2015, 12, 1));
     }
 }
